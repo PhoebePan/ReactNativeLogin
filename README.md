@@ -3,9 +3,11 @@
 #### *Login Template* for *React-Native* using *Redux Architecture*.
 
 ### Screenshots
+<p float="left">
 <img src="./screenshots/01.png" width="250">
 <img src="./screenshots/02.png" width="250">
 <img src="./screenshots/03.png" width="250">
+</p>
 
 ### Packages
 - **react**
