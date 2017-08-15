@@ -10,7 +10,7 @@
 </p>
 
 ### Packages
-- **react**
+- **redux**
 - **react-redux**
 - **redux-thunk**
 - **react-navigation**
