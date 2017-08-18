@@ -14,9 +14,8 @@ class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>{`Welcome ${this.props.state.authUser} !`}</Text>
         <Text>
-          This is the Home component.
+          This is the Home component. You can add your main functions here.
         </Text>
       </View>
     );
@@ -30,6 +29,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect(state => ({state: state.authenticate}), (dispatch) => ({
-  actions: bindActionCreators(authActions, dispatch)
-}))(Home);
+export default Home;
