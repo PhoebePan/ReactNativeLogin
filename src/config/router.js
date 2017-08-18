@@ -5,6 +5,8 @@ import {StackNavigator, NavigationActions} from 'react-navigation';
 import Home from '../components/home';
 import Settings from '../components/settings';
 import Login from '../components/login';
+import Register from '../components/register';
+import ForgotPassword from '../components/forgotpassword';
 
 export const MainStack = StackNavigator({
   Home: {
@@ -18,6 +20,12 @@ export const MainStack = StackNavigator({
 export const LoginStack = StackNavigator({
   Login: {
     screen: Login
+  },
+  Register: {
+    screen: Register
+  },
+  ForgotPassword: {
+    screen: ForgotPassword
   }
 });
 
