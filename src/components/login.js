@@ -1,7 +1,14 @@
 /* @flow */
 
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, Button, TextInput} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Button,
+  TextInput,
+  TouchableOpacity
+} from 'react-native';
 
 import {bindActionCreators} from 'redux';
 import * as authActions from '../actions/authenticate';
@@ -9,9 +16,12 @@ import {connect} from 'react-redux';
 
 class Login extends Component {
 
-  static navigationOptions = {
-    title: 'Login'
-  };
+  static navigationOptions = ({navigation}) => {
+    const {
+      params = {}
+    } = navigation.state;
+    return {title: 'Login'}
+  }
 
   constructor(props) {
     super(props);
@@ -34,6 +44,18 @@ class Login extends Component {
         }} onChangeText={(password) => this.setState({password})} value={this.state.password} placeholder='password' autoCapitalize='none' autoCorrect={false} secureTextEntry={true}/>
 
         <Button title='Login' onPress={() => this.props.actions.login(this.state.username, this.state.password)}/>
+
+        <TouchableOpacity style={{
+          margin: 8
+        }} onPress={() => this.props.navigation.navigate('ForgotPassword')}>
+          <Text style={{
+            textAlign: 'center'
+          }}>
+            Forgot Password?
+          </Text>
+        </TouchableOpacity>
+
+        <Button title='Register' onPress={() => this.props.navigation.navigate('Register')}/>
 
       </View>
     );
