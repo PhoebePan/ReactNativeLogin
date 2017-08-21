@@ -9,6 +9,12 @@
 <img src="./screenshots/03.png" width="250">
 </p>
 
+<p float="left">
+<img src="./screenshots/04.png" width="250">
+<img src="./screenshots/05.png" width="250">
+<img src="./screenshots/06.png" width="250">
+</p>
+
 ### Packages
 - **redux**
 - **react-redux**
