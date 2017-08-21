@@ -5,9 +5,9 @@ import {
   View,
   Text,
   StyleSheet,
-  Button,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  StatusBar
 } from 'react-native';
 
 import {bindActionCreators} from 'redux';
@@ -20,42 +20,111 @@ class Login extends Component {
     const {
       params = {}
     } = navigation.state;
-    return {title: 'Login'}
+    return {title: 'Login', header: null}
   }
 
   constructor(props) {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      hideLogo: false
     };
   }
 
   render() {
     return (
       <View style={styles.container}>
+        <StatusBar backgroundColor='#2c3e50' barStyle='light-content'/>{this.state.hideLogo
+          ? (
+            <View style={{
+              backgroundColor: '#ecf0f1',
+              padding: 8
+            }}>
+              <Text style={{
+                color: '#2c3e50',
+                fontSize: 24,
+                fontWeight: 'bold'
+              }}>
+                Title
+              </Text>
+            </View>
+          )
+          : (
+            <View style={{
+              flex: 1,
+              backgroundColor: '#2c3e50',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}>
+              <Text style={{
+                color: '#ffffff',
+                fontSize: 48,
+                fontWeight: 'bold'
+              }}>
+                Title
+              </Text>
+            </View>
+          )}
 
-        <TextInput style={{
-          height: 40
-        }} onChangeText={(username) => this.setState({username})} value={this.state.username} placeholder='username' autoCapitalize='none' autoCorrect={false}/>
+        <View style={{
+          flex: 1,
+          padding: 8,
+          backgroundColor: '#ecf0f1'
+        }}>
+          <TextInput ref='usernameInput' style={{
+            height: 40
+          }} onFocus={() => this.setState({hideLogo: true})} onChangeText={(username) => this.setState({username})} value={this.state.username} placeholder='Username' autoCapitalize='none' autoCorrect={false} returnKeyType='next' onSubmitEditing={() => this.refs.passwordInput.focus()}/>
 
-        <TextInput style={{
-          height: 40
-        }} onChangeText={(password) => this.setState({password})} value={this.state.password} placeholder='password' autoCapitalize='none' autoCorrect={false} secureTextEntry={true}/>
+          <TextInput ref='passwordInput' style={{
+            height: 40
+          }} onFocus={() => this.setState({hideLogo: true})} onChangeText={(password) => this.setState({password})} value={this.state.password} placeholder='Password' autoCapitalize='none' autoCorrect={false} secureTextEntry={true} returnKeyType='done' onSubmitEditing={() => this.setState({hideLogo: false})}/>
 
-        <Button title='Login' onPress={() => this.props.actions.login(this.state.username, this.state.password)}/>
+          <TouchableOpacity activeOpacity={0.5} onPress={() => this.props.actions.login(this.state.username, this.state.password)}>
+            <View style={{
+              height: 48,
+              borderRadius: 24,
+              backgroundColor: '#16a085',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}>
+              <Text style={{
+                color: '#ffffff',
+                fontWeight: 'bold'
+              }}>
+                LOGIN
+              </Text>
+            </View>
+          </TouchableOpacity>
 
-        <TouchableOpacity style={{
-          margin: 8
-        }} onPress={() => this.props.navigation.navigate('ForgotPassword')}>
-          <Text style={{
-            textAlign: 'center'
-          }}>
-            Forgot Password?
-          </Text>
-        </TouchableOpacity>
+          <TouchableOpacity style={{
+            margin: 8
+          }} onPress={() => this.props.navigation.navigate('ForgotPassword')}>
+            <Text style={{
+              textAlign: 'center'
+            }}>
+              Forgot Password?
+            </Text>
+          </TouchableOpacity>
 
-        <Button title='Register' onPress={() => this.props.navigation.navigate('Register')}/>
+          <TouchableOpacity activeOpacity={0.5} onPress={() => this.props.navigation.navigate('Register')}>
+            <View style={{
+              height: 48,
+              borderRadius: 24,
+              backgroundColor: '#bdc3c7',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}>
+              <Text style={{
+                color: '#ffffff',
+                fontWeight: 'bold'
+              }}>
+                REGISTER
+              </Text>
+            </View>
+          </TouchableOpacity>
+
+        </View>
 
       </View>
     );
@@ -64,8 +133,7 @@ class Login extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    padding: 8
+    flex: 1
   }
 });
 

@@ -1,7 +1,7 @@
 /* @flow */
 
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, Button} from 'react-native';
+import {View, Text, StyleSheet, StatusBar, TouchableOpacity} from 'react-native';
 
 import {bindActionCreators} from 'redux';
 import * as authActions from '../actions/authenticate';
@@ -9,11 +9,28 @@ import {connect} from 'react-redux';
 
 class Home extends Component {
 
-  static navigationOptions = ({navigation}) => ({title: "Home", headerRight: <Button title="Settings" onPress={() => navigation.navigate('Settings')}/>});
+  static navigationOptions = ({navigation}) => ({
+    title: "Home",
+    headerTintColor: '#ffffff',
+    headerStyle: {
+      backgroundColor: '#34495e'
+    },
+    headerRight: <TouchableOpacity style={{
+        margin: 8
+      }} onPress={() => navigation.navigate('Settings')}>
+        <Text style={{
+          textAlign: 'center',
+          color: '#ffffff'
+        }}>
+          Settings
+        </Text>
+      </TouchableOpacity>
+  });
 
   render() {
     return (
       <View style={styles.container}>
+        <StatusBar backgroundColor='#2c3e50' barStyle='light-content'/>
         <Text>
           This is the Home component. You can add your main functions here.
         </Text>
