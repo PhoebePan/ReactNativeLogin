@@ -38,7 +38,7 @@ class Login extends Component {
         <StatusBar backgroundColor='#2c3e50' barStyle='light-content'/>{this.state.hideLogo
           ? (
             <View style={{
-              backgroundColor: '#ecf0f1',
+              backgroundColor: '#eeeeee',
               padding: 8
             }}>
               <Text style={{
@@ -70,7 +70,7 @@ class Login extends Component {
         <View style={{
           flex: 1,
           padding: 8,
-          backgroundColor: '#ecf0f1'
+          backgroundColor: '#eeeeee'
         }}>
           <TextInput ref='usernameInput' style={{
             height: 40

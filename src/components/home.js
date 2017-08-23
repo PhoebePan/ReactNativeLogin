@@ -42,7 +42,8 @@ class Home extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 8
+    padding: 8,
+    backgroundColor: '#eeeeee'
   }
 });
 
