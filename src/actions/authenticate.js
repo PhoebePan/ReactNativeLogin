@@ -1,6 +1,6 @@
 /* @flow */
 
-import {LOGIN_SUCCESS, LOGOUT_SUCCESS} from '../config/strings';
+import {LOGIN_SUCCESS, LOGOUT_SUCCESS} from '../config/redux-events';
 
 export function login(username, password) {
   console.log('login', `${username}:${password}`);

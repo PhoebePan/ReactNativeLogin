@@ -1,5 +1,5 @@
 /* @flow */
-import {LOGIN_SUCCESS, LOGOUT_SUCCESS} from '../config/strings';
+import {LOGIN_SUCCESS, LOGOUT_SUCCESS} from '../config/redux-events';
 
 const initialState = {
   isAuth: false,
