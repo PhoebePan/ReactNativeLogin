@@ -1,18 +1,13 @@
 /* @flow */
 
 import React, {Component} from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-  StatusBar
-} from 'react-native';
+import {View, Text, TextInput, TouchableOpacity, StatusBar} from 'react-native';
 
 import {bindActionCreators} from 'redux';
 import * as authActions from '../actions/authenticate';
 import {connect} from 'react-redux';
+
+import * as COLOR from '../config/colors';
 
 class Login extends Component {
 
@@ -32,45 +27,57 @@ class Login extends Component {
     };
   }
 
+  renderLogo = () => {
+    if (this.state.hideLogo) {
+      return (
+        <View style={{
+          backgroundColor: COLOR.BACKGROUND,
+          padding: 8
+        }}>
+          <Text style={{
+            color: COLOR.PRIMARY,
+            fontSize: 24,
+            fontWeight: 'bold'
+          }}>
+            {`Title`}
+          </Text>
+        </View>
+      );
+    } else {
+      return (
+        <View style={{
+          flex: 1,
+          backgroundColor: COLOR.PRIMARY,
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+          <Text style={{
+            color: COLOR.PRIMARY_TEXT_LIGHT,
+            fontSize: 48,
+            fontWeight: 'bold'
+          }}>
+            {`Title`}
+          </Text>
+        </View>
+      );
+    }
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <StatusBar backgroundColor='#2c3e50' barStyle='light-content'/>{this.state.hideLogo
-          ? (
-            <View style={{
-              backgroundColor: '#fafafa',
-              padding: 8
-            }}>
-              <Text style={{
-                color: '#2c3e50',
-                fontSize: 24,
-                fontWeight: 'bold'
-              }}>
-                Title
-              </Text>
-            </View>
-          )
-          : (
-            <View style={{
-              flex: 1,
-              backgroundColor: '#2c3e50',
-              justifyContent: 'center',
-              alignItems: 'center'
-            }}>
-              <Text style={{
-                color: '#ffffff',
-                fontSize: 48,
-                fontWeight: 'bold'
-              }}>
-                Title
-              </Text>
-            </View>
-          )}
+      <View style={{
+        flex: 1
+      }}>
+        <View>
+          <StatusBar backgroundColor={COLOR.STATUS_BAR} barStyle='light-content'/>
+        </View>
+
+        {this.renderLogo()}
 
         <View style={{
           flex: 1,
           padding: 8,
-          backgroundColor: '#fafafa'
+          backgroundColor: COLOR.BACKGROUND
         }}>
           <TextInput ref='usernameInput' style={{
             height: 40
@@ -78,18 +85,20 @@ class Login extends Component {
 
           <TextInput ref='passwordInput' style={{
             height: 40
-          }} onFocus={() => this.setState({hideLogo: true})} onChangeText={(password) => this.setState({password})} value={this.state.password} placeholder='Password' autoCapitalize='none' autoCorrect={false} secureTextEntry={true} returnKeyType='done' onSubmitEditing={() => this.setState({hideLogo: false})}/>
+          }} onFocus={() => this.setState({hideLogo: true})} onChangeText={(password) => this.setState({password})} value={this.state.password} placeholder='Password' autoCapitalize='none' autoCorrect={false} secureTextEntry={true} returnKeyType='done' onSubmitEditing={() => {
+            this.setState({hideLogo: false})
+          }}/>
 
           <TouchableOpacity activeOpacity={0.5} onPress={() => this.props.actions.login(this.state.username, this.state.password)}>
             <View style={{
               height: 48,
               borderRadius: 24,
-              backgroundColor: '#16a085',
+              backgroundColor: COLOR.TINT,
               justifyContent: 'center',
               alignItems: 'center'
             }}>
               <Text style={{
-                color: '#ffffff',
+                color: COLOR.BUTTON_TEXT,
                 fontWeight: 'bold'
               }}>
                 LOGIN
@@ -130,12 +139,6 @@ class Login extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  }
-});
 
 export default connect(state => ({state: state.authenticate}), (dispatch) => ({
   actions: bindActionCreators(authActions, dispatch)

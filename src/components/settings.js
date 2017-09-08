@@ -1,11 +1,13 @@
 /* @flow */
 
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 
 import {bindActionCreators} from 'redux';
 import * as authActions from '../actions/authenticate';
 import {connect} from 'react-redux';
+
+import * as COLOR from '../config/colors';
 
 class Settings extends Component {
 
@@ -15,16 +17,20 @@ class Settings extends Component {
     } = navigation.state;
     return {
       title: 'Settings',
-      headerTintColor: '#ffffff',
+      headerTintColor: COLOR.HEADER_TINT,
       headerStyle: {
-        backgroundColor: '#34495e'
+        backgroundColor: COLOR.HEADER
       }
     }
   }
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={{
+        flex: 1,
+        padding: 8,
+        backgroundColor: COLOR.BACKGROUND
+      }}>
         <View style={{
           paddingVertical: 16
         }}>
@@ -37,12 +43,12 @@ class Settings extends Component {
           <View style={{
             height: 48,
             borderRadius: 24,
-            backgroundColor: '#16a085',
+            backgroundColor: COLOR.TINT,
             justifyContent: 'center',
             alignItems: 'center'
           }}>
             <Text style={{
-              color: '#ffffff',
+              color: COLOR.BUTTON_TEXT,
               fontWeight: 'bold'
             }}>
               LOGOUT
@@ -54,14 +60,6 @@ class Settings extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 8,
-    backgroundColor: '#fafafa'
-  }
-});
 
 export default connect(state => ({state: state.authenticate}), (dispatch) => ({
   actions: bindActionCreators(authActions, dispatch)

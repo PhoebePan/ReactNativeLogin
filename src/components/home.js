@@ -1,26 +1,28 @@
 /* @flow */
 
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, StatusBar, TouchableOpacity} from 'react-native';
+import {View, Text, StatusBar, TouchableOpacity} from 'react-native';
 
 import {bindActionCreators} from 'redux';
 import * as authActions from '../actions/authenticate';
 import {connect} from 'react-redux';
 
+import * as COLOR from '../config/colors';
+
 class Home extends Component {
 
   static navigationOptions = ({navigation}) => ({
     title: "Home",
-    headerTintColor: '#ffffff',
+    headerTintColor: COLOR.HEADER_TINT,
     headerStyle: {
-      backgroundColor: '#34495e'
+      backgroundColor: COLOR.HEADER
     },
     headerRight: <TouchableOpacity style={{
         margin: 8
       }} onPress={() => navigation.navigate('Settings')}>
         <Text style={{
           textAlign: 'center',
-          color: '#ffffff'
+          color: COLOR.HEADER_TINT
         }}>
           Settings
         </Text>
@@ -29,8 +31,12 @@ class Home extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <StatusBar backgroundColor='#2c3e50' barStyle='light-content'/>
+      <View style={{
+        flex: 1,
+        padding: 8,
+        backgroundColor: COLOR.BACKGROUND
+      }}>
+        <StatusBar backgroundColor={COLOR.STATUS_BAR} barStyle='light-content'/>
         <Text>
           This is the Home component. You can add your main functions here.
         </Text>
@@ -38,13 +44,5 @@ class Home extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 8,
-    backgroundColor: '#fafafa'
-  }
-});
 
 export default Home;
