@@ -20,6 +20,7 @@
 - **react-redux**
 - **redux-thunk**
 - **react-navigation**
+- **react-native-vector-icons**
 
 ## Installation
 1. Initialize node modules with **npm install** or **yarn install**.
