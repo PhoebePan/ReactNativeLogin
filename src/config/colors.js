@@ -8,3 +8,6 @@ export const BACKGROUND = '#eaeaea';
 export const TINT = '#16a085';
 export const TINT_DARK = '#bdc3c7';
 export const BUTTON_TEXT = '#ffffff';
+export const INPUT_TEXT_BACKGROUND = '#ffffff';
+export const ICON = '#ffffff';
+export const TRANSPARENT = 'transparent';

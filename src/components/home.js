@@ -2,12 +2,15 @@
 
 import React, {Component} from 'react';
 import {View, Text, StatusBar, TouchableOpacity} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
 
 import {bindActionCreators} from 'redux';
 import * as authActions from '../actions/authenticate';
 import {connect} from 'react-redux';
 
 import * as COLOR from '../config/colors';
+
 
 class Home extends Component {
 
@@ -20,12 +23,7 @@ class Home extends Component {
     headerRight: <TouchableOpacity style={{
         margin: 8
       }} onPress={() => navigation.navigate('Settings')}>
-        <Text style={{
-          textAlign: 'center',
-          color: COLOR.HEADER_TINT
-        }}>
-          Settings
-        </Text>
+        <Icon name="settings" size={21} color={COLOR.ICON} />
       </TouchableOpacity>
   });
 

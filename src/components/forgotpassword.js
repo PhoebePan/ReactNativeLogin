@@ -34,21 +34,20 @@ class ForgotPassword extends Component {
         </View>
 
         <TouchableOpacity activeOpacity={0.5} onPress={() => this.props.navigation.goBack()}>
-          <View style={{
-            height: 48,
-            borderRadius: 24,
-            backgroundColor: COLOR.TINT,
-            justifyContent: 'center',
-            alignItems: 'center'
+        <View style={{
+          height: 48,
+          backgroundColor: COLOR.TINT,
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+          <Text style={{
+            color: COLOR.BUTTON_TEXT,
+            fontWeight: 'bold'
           }}>
-            <Text style={{
-              color: COLOR.BUTTON_TEXT,
-              fontWeight: 'bold'
-            }}>
-              NEXT
-            </Text>
-          </View>
-        </TouchableOpacity>
+            NEXT
+          </Text>
+        </View>
+      </TouchableOpacity>
 
       </View>
     );
